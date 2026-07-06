@@ -1,0 +1,142 @@
+/* Hoja de impresión / PDF — oculta en pantalla */
+.print-sheet {
+  display: none;
+}
+
+.print-sheet__notes-label {
+  margin: 0 0 1.5mm;
+  font-size: 8pt;
+  font-weight: 600;
+  color: #333;
+}
+
+.print-sheet__notes {
+  min-height: 15mm;
+  margin-bottom: 4mm;
+  border: 0.5pt solid #aaa;
+  border-radius: 2mm;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 5.5mm,
+      #bbb 5.5mm,
+      #bbb 5.6mm
+    );
+  background-origin: content-box;
+  padding: 2mm 3mm 0;
+}
+
+.print-sheet__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 5mm;
+  margin-bottom: 4mm;
+  padding-bottom: 2mm;
+  border-bottom: 0.6pt solid #333;
+}
+
+.print-sheet__title {
+  margin: 0;
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.print-sheet__meta {
+  margin: 0;
+  font-size: 9pt;
+  line-height: 1.3;
+  color: #333;
+  text-align: right;
+}
+
+.print-sheet__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+  align-items: start;
+}
+
+.print-sheet__section-title {
+  margin: 0 0 2mm;
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 0.5pt solid #666;
+  padding-bottom: 1mm;
+}
+
+.print-sheet__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  column-count: 2;
+  column-gap: 4mm;
+}
+
+.print-sheet__item {
+  break-inside: avoid;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  margin-bottom: 0.85mm;
+  color: #111;
+}
+
+.print-sheet__pais {
+  font-weight: 700;
+}
+
+.print-sheet__flag {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.5mm;
+}
+
+.print-sheet__flag .fi {
+  width: 3.5mm;
+  height: 2.5mm;
+  border-radius: 0.3mm;
+  box-shadow: 0 0 0 0.2pt #999;
+}
+
+.print-sheet__nums {
+  font-weight: 400;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-sheet {
+    display: block !important;
+    font-family: "Segoe UI", Arial, sans-serif;
+    width: 100%;
+  }
+
+  .print-sheet__item {
+    font-size: 8.5pt;
+    line-height: 1.35;
+    margin-bottom: 0.85mm;
+  }
+}
